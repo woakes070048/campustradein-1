@@ -6,7 +6,8 @@ plugins {
 }
 
 run {
-    mainClassName = 'Test'
+    mainClassName = 'me.ifeify.Demo'
+    applicationDefaultJvmArgs = ["-DMONGO_CONFIG=mongo.yml"]
 }
 
 repositories {
@@ -18,8 +19,7 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.13'
     compile 'com.google.inject:guice:4.1.0'
     compile 'com.google.guava:guava:19.0'
-    compile 'javax.validation:validation-api:1.1.0.Final'
-    compile 'org.hibernate:hibernate-validator:5.2.1.Final'
-    compile 'org.hibernate:hibernate-validator-annotation-processor:5.2.1.Final'
+    compile 'org.mongodb.morphia:morphia:1.0.0-rc1'
+    compile 'org.yaml:snakeyaml:1.17'
     testCompile 'junit:junit:4.12'
 }
