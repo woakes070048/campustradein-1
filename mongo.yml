@@ -1,11 +1,8 @@
 node_1:
-  host: 127.0.0.1
+  hostname: 127.0.0.1
   port: 27071
-  max_connections: 50
-  db_path: /data/db
 
-node_12:
-  host: 127.0.0.1
+node_2:
+  hostname: 127.0.0.1
   port: 27071
-  max_connections: 50
-  db_path: /data/db
+
