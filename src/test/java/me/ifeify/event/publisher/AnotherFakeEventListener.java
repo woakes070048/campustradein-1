@@ -9,7 +9,6 @@ import me.ifeify.event.listener.EventListener;
 public class AnotherFakeEventListener implements EventListener {
     @Override
     public void handleEvent(Event event) {
-        long timestamp = event.getTimestamp();
         System.out.println("Handling another fake event");
     }
 }

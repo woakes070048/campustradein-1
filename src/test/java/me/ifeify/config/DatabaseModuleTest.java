@@ -13,21 +13,17 @@ import static org.junit.Assert.assertEquals;
 
 
 /**
+ * Simple test to make sure Guice configures the mongodb connection properly
  * @author ifeify
  */
 @Ignore
 public class DatabaseModuleTest {
-    @MongoDB
-    private DatabaseConnectionProvider<MongoClient> mongoClientProvider;
 
-    /**
-     * simple test to make sure Guice configures the client properly
-     */
     @Test
     public void verifyMongoClientIsCreated() throws IOException {
         System.setProperty("MONGO_CONFIG_FILE", "etc/mongo_test.yml");
         Injector injector = Guice.createInjector(new DatabaseModule());
-        mongoClientProvider = (DatabaseConnectionProvider<MongoClient>)
+        DatabaseConnectionProvider<MongoClient> mongoClientProvider = (DatabaseConnectionProvider<MongoClient>)
                                 injector.getProvider(DatabaseConnectionProvider.class);
         MongoClient mongoClient = (MongoClient)mongoClientProvider.get();
         assertEquals(1, mongoClient.getServerAddressList().size());

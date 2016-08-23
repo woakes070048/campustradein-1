@@ -1,9 +1,8 @@
 package me.ifeify.config;
 
 import com.google.inject.AbstractModule;
-import me.ifeify.config.annotation.InAppPublisher;
-import me.ifeify.event.publisher.EventPublisher;
 import me.ifeify.event.publisher.DefaultEventPublisher;
+import me.ifeify.event.publisher.EventPublisher;
 
 /**
  * @author ifeify
