@@ -9,7 +9,7 @@
 if "%OS%"=="Windows_NT" setlocal
 
 @rem Add default JVM options here. You can also use JAVA_OPTS and PLAYGROUND_OPTS to pass JVM options to this script.
-set DEFAULT_JVM_OPTS="-DMONGO_CONFIG=mongo.yml"
+set DEFAULT_JVM_OPTS="-DMONGO_CONFIG=etc/mongo_test.yml"
 
 set DIRNAME=%~dp0
 if "%DIRNAME%" == "" set DIRNAME=.
@@ -69,10 +69,10 @@ set CMD_LINE_ARGS=%$
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\playground.jar;%APP_HOME%\lib\slf4j-api-1.7.13.jar;%APP_HOME%\lib\guice-4.1.0.jar;%APP_HOME%\lib\guava-19.0.jar;%APP_HOME%\lib\morphia-1.0.0-rc1.jar;%APP_HOME%\lib\snakeyaml-1.17.jar;%APP_HOME%\lib\javax.inject-1.jar;%APP_HOME%\lib\aopalliance-1.0.jar;%APP_HOME%\lib\mongo-java-driver-3.0.1.jar;%APP_HOME%\lib\proxytoys-1.0.jar;%APP_HOME%\lib\cglib-nodep-2.2.2.jar
+set CLASSPATH=%APP_HOME%\lib\playground-0.0.1.jar;%APP_HOME%\lib\slf4j-api-1.7.13.jar;%APP_HOME%\lib\guice-4.1.0.jar;%APP_HOME%\lib\guice-assistedinject-4.1.0.jar;%APP_HOME%\lib\guice-throwingproviders-4.1.0.jar;%APP_HOME%\lib\guava-19.0.jar;%APP_HOME%\lib\morphia-1.0.0-rc1.jar;%APP_HOME%\lib\snakeyaml-1.17.jar;%APP_HOME%\lib\javax.inject-1.jar;%APP_HOME%\lib\aopalliance-1.0.jar;%APP_HOME%\lib\mongo-java-driver-3.0.1.jar;%APP_HOME%\lib\proxytoys-1.0.jar;%APP_HOME%\lib\cglib-nodep-2.2.2.jar
 
 @rem Execute playground
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %PLAYGROUND_OPTS%  -classpath "%CLASSPATH%" Demo %CMD_LINE_ARGS%
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %PLAYGROUND_OPTS%  -classpath "%CLASSPATH%" me.ifeify.App %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell
