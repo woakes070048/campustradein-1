@@ -10,3 +10,5 @@ before_script:
   - sleep 15
   - mongo --version
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
