@@ -4,8 +4,11 @@ import me.ifeify.event.Event;
 
 /**
  * @author ifeify
- * @date 8/19/16.
  */
 public interface EventListener {
+    /**
+     * performs an action in response to the event that occurred
+     * @param event event that was triggered
+     */
     void handleEvent(Event event);
 }

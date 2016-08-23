@@ -4,25 +4,18 @@ import java.io.Serializable;
 
 /**
  * @author ifeify
- * @date 8/19/16.
  */
-public abstract class Event<T> implements Serializable {
-    private T model;
+public abstract class Event implements Serializable {
     private long timestamp;
 
-    public Event(T model) {
-        this.model = model;
+    public Event() {
         this.timestamp = System.currentTimeMillis();
     }
 
-    public T getModel() {
-        return model;
-    }
-
-    public void setTimestamp(long timestamp) {
-        this.timestamp = timestamp;
-    }
-
+    /**
+     * Returns the time the event was generated in milliseconds
+     * @return event timestamp
+     */
     public long getTimestamp() {
         return timestamp;
     }

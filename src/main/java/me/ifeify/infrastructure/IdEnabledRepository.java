@@ -11,6 +11,7 @@ public interface IdEnabledRepository<T> {
 
     /**
      * Returns a unique identifier for an item
+     * @return a unique unused id
      */
     String nextAvailableId();
 

@@ -9,6 +9,8 @@ import org.junit.Test;
 
 import java.io.IOException;
 
+import static org.junit.Assert.assertEquals;
+
 
 /**
  * @author ifeify
@@ -16,18 +18,18 @@ import java.io.IOException;
 @Ignore
 public class DatabaseModuleTest {
     @MongoDB
-    DatabaseConnectionProvider<MongoClient> mongoClientProvider;
+    private DatabaseConnectionProvider<MongoClient> mongoClientProvider;
 
     /**
      * simple test to make sure Guice configures the client properly
      */
     @Test
     public void verifyMongoClientIsCreated() throws IOException {
-        System.setProperty("MONGO_CONFIG_FILE", "etc/mongo.yml");
+        System.setProperty("MONGO_CONFIG_FILE", "etc/mongo_test.yml");
         Injector injector = Guice.createInjector(new DatabaseModule());
         mongoClientProvider = (DatabaseConnectionProvider<MongoClient>)
                                 injector.getProvider(DatabaseConnectionProvider.class);
         MongoClient mongoClient = (MongoClient)mongoClientProvider.get();
-        System.out.println(mongoClient.getServerAddressList());
+        assertEquals(1, mongoClient.getServerAddressList().size());
     }
 }

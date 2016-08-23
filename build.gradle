@@ -13,9 +13,13 @@ jacocoTestReport {
     }
 }
 
+javadoc {
+    source = sourceSets.main.allJava
+}
+
 run {
     mainClassName = 'me.ifeify.App'
-    applicationDefaultJvmArgs = ["-DMONGO_CONFIG=etc/mongo.yml"]
+    applicationDefaultJvmArgs = ["-DMONGO_CONFIG=etc/mongo_test.yml"]
 }
 
 repositories {
