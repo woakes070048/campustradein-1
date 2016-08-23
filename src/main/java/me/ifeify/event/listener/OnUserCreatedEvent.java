@@ -1,7 +1,6 @@
 package me.ifeify.event.listener;
 
 import me.ifeify.event.Event;
-import me.ifeify.event.listener.EventListener;
 
 /**
  * @author ifeify

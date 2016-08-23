@@ -2,7 +2,6 @@ package me.ifeify.event.publisher;
 
 import me.ifeify.event.Event;
 import me.ifeify.event.listener.EventListener;
-import me.ifeify.event.publisher.EventPublisher;
 
 import java.util.ArrayList;
 import java.util.List;

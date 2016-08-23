@@ -3,11 +3,19 @@ plugins {
     id 'application'
     id 'idea'
     id 'eclipse'
+    id 'jacoco'
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.destination "${buildDir}/jacocoHtml"
+    }
 }
 
 run {
-    mainClassName = 'me.ifeify.Demo'
-    applicationDefaultJvmArgs = ["-DMONGO_CONFIG=mongo.yml"]
+    mainClassName = 'me.ifeify.App'
+    applicationDefaultJvmArgs = ["-DMONGO_CONFIG=etc/mongo.yml"]
 }
 
 repositories {

@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * @author ifeify
  */
-public class Demo {
+public class App {
     public static void main(String[] args) throws FileNotFoundException {
         Injector injector = Guice.createInjector(new EventPublisherModule());
         EventPublisher eventPublisher = injector.getInstance(EventPublisher.class);
