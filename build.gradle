@@ -1,3 +1,5 @@
+import com.sun.deploy.Environment
+
 plugins {
     id 'java'
     id 'application'
@@ -27,6 +29,11 @@ repositories {
     jcenter()
 }
 
+configurations {
+    providedRuntime
+    codacy
+}
+
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.13'
     compile 'com.google.inject:guice:4.1.0'
@@ -36,4 +43,36 @@ dependencies {
     compile 'org.mongodb.morphia:morphia:1.0.0-rc1'
     compile 'org.yaml:snakeyaml:1.17'
     testCompile 'junit:junit:4.12'
+
+    codacy 'com.codacy:codacy-coverage-reporter:1.0.10'
+}
+
+task uploadCoverageToCodacy(type: JavaExec, evaluationDependsOn: jacocoTestReport) {
+    environment 'CODACY_PROJECT_TOKEN', '9dcdb079e863434caef41bcc39a51eae'
+    main = "com.codacy.CodacyCoverageReporter"
+    classpath = configurations.codacy
+    args = [
+            "-1",
+            "Java",
+            "-r",
+            "${buildDir}/test-Results/jacoco/${archiveBaseName}.xml"
+    ]
+}
+
+task (codacyDepSize) << {
+    def size = 0;
+    configurations.codacy.collect { it.length() / (1024 * 1024) }.each { size += it }
+    println "Total dependencies size: ${Math.round(size * 100) / 100} Mb"
+
+    configurations
+            .codacy
+            .sort { -it.length() }
+            .each { println "${it.name} : ${Math.round(it.length() / (1024) * 100) / 100} kb" }
+}
+
+task (codacyLocs) << {
+    configurations.codacy.each {
+        String jarName = it
+        println jarName
+    }
 }
