@@ -3,39 +3,39 @@ package me.ifeify.search.symboltable;
 /**
  * @author ifeify
  */
-public interface OrderedSymbolTable<Key extends Comparable<Key>, Value> extends SymbolTable {
+public interface OrderedSymbolTable<K extends Comparable<K>, V> extends SymbolTable {
     /**
      * Retrieves the smallest key in the table
      * @return smallest key in the table
      */
-    Key min();
+    K min();
 
     /**
      * Retrieves the largest key in the table
      * @return largest key in the table
      */
-    Key max();
+    K max();
 
     /**
      * Retrieves the largest key less than or equal to {@code key}
      * @param key the comparison key
      * @return largest key less than or equal to {@code key}
      */
-    Key floor(Key key);
+    K floor(K key);
 
     /**
      * Retrieves the smallest key greater than or equal to {@code key}
      * @param key the comparison key
      * @return smallest key greater than or equal to {@code key}
      */
-    Key ceiling(Key key);
+    K ceiling(K key);
 
     /**
      * Retreives the number of keys less than {@code key}
      * @param key
      * @return the number of keys less than {@code key}
      */
-    int rank(Key key);
+    int rank(K key);
 
     /**
      * Retrives the key of rank {@code k}
@@ -43,7 +43,7 @@ public interface OrderedSymbolTable<Key extends Comparable<Key>, Value> extends 
      * @return the key of rank {@code k}
      * @see #rank(Comparable)
      */
-    Key select(int k);
+    K select(int k);
 
     /**
      * Removes the smallest key
@@ -61,7 +61,7 @@ public interface OrderedSymbolTable<Key extends Comparable<Key>, Value> extends 
      * @param hi the largest key
      * @return the number of keys in [lo..hi] in sorted order
      */
-    int size(Key lo, Key hi);
+    int size(K lo, K hi);
 
     /**
      * Retrieves keys in sorted order from {@code lo} to {@code hi}
@@ -69,5 +69,5 @@ public interface OrderedSymbolTable<Key extends Comparable<Key>, Value> extends 
      * @param hi the largest key
      * @return an iterable list of sorted keys in [lo..hi]
      */
-    Iterable<Key> keys(Key lo, Key hi);
+    Iterable<K> keys(K lo, K hi);
 }
